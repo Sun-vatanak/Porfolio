@@ -5,12 +5,22 @@ import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function Hero() {
+  const heroRef = useScrollAnimation({ threshold: 0.1 });
   const [isVisible, setIsVisible] = useState(false);
-  const heroRef = useScrollAnimation({ threshold: 0.1, rootMargin: "0px" });
-  const statsRef = useScrollAnimation({ threshold: 0.3 });
 
   useEffect(() => {
+    // Immediately show animations
     setIsVisible(true);
+
+    // Also add animate-in class to any scroll animations for debugging
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll(
+        ".scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale",
+      );
+      elements.forEach((el) => el.classList.add("animate-in"));
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const scrollToNextSection = () => {
@@ -37,34 +47,52 @@ export default function Hero() {
       />
 
       <div className="container-custom text-center relative z-10" ref={heroRef}>
-        <div className="scroll-animation">
-          {/* Badge */}
+        {/* Badge */}
+        <div
+          className={`scroll-animation transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <Badge
             variant="outline"
             className="mb-6 text-portfolio-primary border-portfolio-primary/20 hover:bg-portfolio-primary/10 transition-colors"
           >
             Available for freelance projects
           </Badge>
+        </div>
 
-          {/* Main Heading */}
+        {/* Main Heading */}
+        <div
+          className={`scroll-animation transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold mb-6 text-balance">
             <span className="block">Hello, I'm</span>
             <span className="gradient-text">Sun Vatanak</span>
           </h1>
+        </div>
 
-          {/* Subtitle */}
+        {/* Subtitle */}
+        <div
+          className={`scroll-animation transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
             UX/UI Designer crafting digital experiences that blend creativity
             with functionality
           </p>
+        </div>
 
-          {/* Description */}
+        {/* Description */}
+        <div
+          className={`scroll-animation transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <p className="text-lg text-muted-foreground mb-12 max-w-xl mx-auto">
             I specialize in creating intuitive user interfaces and engaging user
             experiences for web and mobile applications.
           </p>
+        </div>
 
-          {/* CTA Buttons */}
+        {/* CTA Buttons */}
+        <div
+          className={`scroll-animation transition-all duration-1000 delay-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <Button
               size="lg"
@@ -87,41 +115,40 @@ export default function Hero() {
               Download CV
             </Button>
           </div>
+        </div>
 
-          {/* Stats */}
-          <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto"
-            ref={statsRef}
-          >
-            <div className="text-center scroll-animation-scale scroll-animation-delay-1">
-              <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
-                50+
-              </div>
-              <div className="text-sm text-muted-foreground">
-                Projects Completed
-              </div>
+        {/* Stats */}
+        <div
+          className={`grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto transition-all duration-1000 delay-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
+          <div className="text-center">
+            <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
+              50+
             </div>
-            <div className="text-center scroll-animation-scale scroll-animation-delay-2">
-              <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
-                3+
-              </div>
-              <div className="text-sm text-muted-foreground">
-                Years Experience
-              </div>
+            <div className="text-sm text-muted-foreground">
+              Projects Completed
             </div>
-            <div className="text-center scroll-animation-scale scroll-animation-delay-3">
-              <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
-                25+
-              </div>
-              <div className="text-sm text-muted-foreground">Happy Clients</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
+              3+
             </div>
-            <div className="text-center scroll-animation-scale scroll-animation-delay-4">
-              <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
-                100%
-              </div>
-              <div className="text-sm text-muted-foreground">
-                Client Satisfaction
-              </div>
+            <div className="text-sm text-muted-foreground">
+              Years Experience
+            </div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
+              25+
+            </div>
+            <div className="text-sm text-muted-foreground">Happy Clients</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
+              100%
+            </div>
+            <div className="text-sm text-muted-foreground">
+              Client Satisfaction
             </div>
           </div>
         </div>
