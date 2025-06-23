@@ -108,6 +108,14 @@ export default {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        "skill-bar": {
+          "0%": { width: "0%" },
+          "100%": { width: "var(--skill-width)" },
+        },
+        "icon-bounce": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -116,6 +124,8 @@ export default {
         "slide-in": "slide-in 0.6s ease-out",
         "scale-in": "scale-in 0.6s ease-out",
         float: "float 6s ease-in-out infinite",
+        "skill-bar": "skill-bar 1.5s ease-out forwards",
+        "icon-bounce": "icon-bounce 0.6s ease-in-out",
       },
       backdropBlur: {
         xs: "2px",

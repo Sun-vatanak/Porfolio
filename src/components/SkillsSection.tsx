@@ -251,17 +251,17 @@ export default function SkillsSection() {
                         </span>
                       </div>
                       <div className="relative">
-                        <Progress
-                          value={skill.level}
-                          className="h-3 bg-gray-200 rounded-full overflow-hidden"
-                        />
-                        <div
-                          className={`absolute top-0 left-0 h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out opacity-80`}
-                          style={{
-                            width: `${skill.level}%`,
-                            animation: `skill-load-${skillIndex} 1.5s ease-out ${categoryIndex * 0.2 + skillIndex * 0.1}s both`,
-                          }}
-                        />
+                        <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full bg-gradient-to-r ${skill.color} rounded-full animate-skill-bar opacity-80`}
+                            style={
+                              {
+                                "--skill-width": `${skill.level}%`,
+                                animationDelay: `${categoryIndex * 0.2 + skillIndex * 0.1}s`,
+                              } as React.CSSProperties
+                            }
+                          />
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -296,49 +296,6 @@ export default function SkillsSection() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes skill-load-0 {
-          from {
-            width: 0%;
-          }
-          to {
-            width: var(--skill-width, 0%);
-          }
-        }
-        @keyframes skill-load-1 {
-          from {
-            width: 0%;
-          }
-          to {
-            width: var(--skill-width, 0%);
-          }
-        }
-        @keyframes skill-load-2 {
-          from {
-            width: 0%;
-          }
-          to {
-            width: var(--skill-width, 0%);
-          }
-        }
-        @keyframes skill-load-3 {
-          from {
-            width: 0%;
-          }
-          to {
-            width: var(--skill-width, 0%);
-          }
-        }
-        @keyframes skill-load-4 {
-          from {
-            width: 0%;
-          }
-          to {
-            width: var(--skill-width, 0%);
-          }
-        }
-      `}</style>
     </section>
   );
 }
