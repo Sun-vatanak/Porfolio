@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectCard from "@/components/ProjectCard";
+import AnimationTest from "@/components/AnimationTest";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -66,17 +67,20 @@ const testimonials = [
 ];
 
 const Index = () => {
-  const aboutRef = useScrollAnimation({ threshold: 0.2 });
+  const aboutRef = useScrollAnimation({ threshold: 0.1 });
   const projectsRef = useScrollAnimation({ threshold: 0.1 });
-  const experienceRef = useScrollAnimation({ threshold: 0.15 });
+  const experienceRef = useScrollAnimation({ threshold: 0.1 });
   const educationRef = useScrollAnimation({ threshold: 0.1 });
-  const testimonialsRef = useScrollAnimation({ threshold: 0.2 });
-  const ctaRef = useScrollAnimation({ threshold: 0.3 });
+  const testimonialsRef = useScrollAnimation({ threshold: 0.1 });
+  const ctaRef = useScrollAnimation({ threshold: 0.1 });
 
   return (
     <Layout>
       {/* Hero Section */}
       <Hero />
+
+      {/* Animation Test - Remove this after testing */}
+      <AnimationTest />
 
       {/* About Section */}
       <section id="about" className="py-20" ref={aboutRef}>
