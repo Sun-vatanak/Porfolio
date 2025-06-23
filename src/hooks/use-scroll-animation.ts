@@ -1,38 +1,24 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
 
 interface UseScrollAnimationOptions {
   threshold?: number;
   rootMargin?: string;
   once?: boolean;
-  delay?: number;
 }
 
 export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const {
     threshold = 0.1,
-    rootMargin = "0px 0px -100px 0px",
+    rootMargin = "0px 0px -50px 0px",
     once = true,
-    delay = 0,
   } = options;
-  const elementRef = useRef<HTMLElement>(null);
-
-  const addAnimationClass = useCallback(
-    (element: Element) => {
-      if (delay > 0) {
-        setTimeout(() => {
-          element.classList.add("animate-in");
-        }, delay);
-      } else {
-        element.classList.add("animate-in");
-      }
-    },
-    [delay],
-  );
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = elementRef.current;
     if (!element) return;
 
+    // Add initial scroll animation class if not present
     if (
       !element.classList.contains("scroll-animation") &&
       !element.classList.contains("scroll-animation-left") &&
@@ -46,12 +32,27 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            addAnimationClass(entry.target);
+            // Find all children with scroll-animation classes and animate them
+            const animatedElements = entry.target.querySelectorAll(
+              ".scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale",
+            );
+
+            animatedElements.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add("animate-in");
+              }, index * 100); // Stagger the animations
+            });
+
             if (once) {
               observer.unobserve(entry.target);
             }
           } else if (!once) {
-            entry.target.classList.remove("animate-in");
+            const animatedElements = entry.target.querySelectorAll(
+              ".scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale",
+            );
+            animatedElements.forEach((el) => {
+              el.classList.remove("animate-in");
+            });
           }
         });
       },
@@ -66,7 +67,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
     return () => {
       observer.disconnect();
     };
-  }, [threshold, rootMargin, once, addAnimationClass]);
+  }, [threshold, rootMargin, once]);
 
   return elementRef;
 }
