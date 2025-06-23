@@ -256,6 +256,178 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Education Section */}
+      <section className="py-20">
+        <div className="container-custom">
+          <div className="text-center mb-16 scroll-animation">
+            <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4 flex items-center justify-center gap-3">
+              <span className="text-3xl">🎓</span>
+              Education & Learning
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Continuous learning and formal education that shaped my design
+              expertise
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Formal Education */}
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 scroll-animation-left">
+              <CardContent className="p-8">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-16 h-16 bg-portfolio-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-3xl">🏛️</span>
+                  </div>
+                  <div>
+                    <Badge className="mb-2">2017 - 2021</Badge>
+                    <h3 className="font-bold text-xl mb-2">
+                      Bachelor of Computer Science
+                    </h3>
+                    <p className="text-portfolio-primary font-semibold">
+                      Royal University of Phnom Penh
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  Specialized in Human-Computer Interaction and User Interface
+                  Design. Graduated with honors (GPA: 3.8/4.0).
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline" className="text-xs">
+                    HCI
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    UI Design
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    Software Engineering
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    Web Development
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Design Bootcamp */}
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 scroll-animation-right">
+              <CardContent className="p-8">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-16 h-16 bg-portfolio-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-3xl">🎨</span>
+                  </div>
+                  <div>
+                    <Badge variant="secondary" className="mb-2">
+                      2021 - 2022
+                    </Badge>
+                    <h3 className="font-bold text-xl mb-2">
+                      UX/UI Design Bootcamp
+                    </h3>
+                    <p className="text-portfolio-secondary font-semibold">
+                      Cambodia Academy of Digital Technology
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  Intensive 12-month program focused on modern UX/UI design
+                  practices and user research methodologies.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline" className="text-xs">
+                    Design Thinking
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    User Research
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    Prototyping
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    Design Systems
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Key Certifications */}
+          <div className="scroll-animation">
+            <h3 className="text-2xl font-bold text-center mb-8 flex items-center justify-center gap-3">
+              <span className="text-2xl">🏆</span>
+              Key Certifications
+            </h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card className="hover:shadow-lg transition-shadow scroll-animation-scale scroll-animation-delay-1">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-portfolio-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                      alt="Google"
+                      className="w-6 h-6 object-contain"
+                    />
+                  </div>
+                  <h4 className="font-semibold mb-2">UX Design Professional</h4>
+                  <p className="text-sm text-portfolio-primary font-medium mb-1">
+                    Google
+                  </p>
+                  <p className="text-xs text-muted-foreground">March 2022</p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow scroll-animation-scale scroll-animation-delay-2">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-portfolio-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🎯</span>
+                  </div>
+                  <h4 className="font-semibold mb-2">Interaction Design</h4>
+                  <p className="text-sm text-portfolio-secondary font-medium mb-1">
+                    UC San Diego
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    September 2021
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow scroll-animation-scale scroll-animation-delay-3">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-portfolio-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                      alt="Figma"
+                      className="w-6 h-6 object-contain"
+                    />
+                  </div>
+                  <h4 className="font-semibold mb-2">Advanced Figma</h4>
+                  <p className="text-sm text-portfolio-accent font-medium mb-1">
+                    Design+Code
+                  </p>
+                  <p className="text-xs text-muted-foreground">January 2023</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Learning Philosophy */}
+          <div className="mt-16 text-center scroll-animation">
+            <Card className="bg-gradient-to-r from-portfolio-primary/5 to-portfolio-secondary/5 border-0">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold mb-4">
+                  Continuous Learning Philosophy
+                </h3>
+                <p className="text-muted-foreground max-w-3xl mx-auto">
+                  "I believe that great design comes from continuous learning
+                  and staying curious. My educational journey combines formal
+                  computer science foundations with specialized design training,
+                  allowing me to bridge the gap between technical feasibility
+                  and exceptional user experiences."
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-20" ref={testimonialsRef}>
         <div className="container-custom">
