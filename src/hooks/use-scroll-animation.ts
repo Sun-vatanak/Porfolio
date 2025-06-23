@@ -8,51 +8,63 @@ interface UseScrollAnimationOptions {
 
 export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const {
-    threshold = 0.1,
-    rootMargin = "0px 0px -50px 0px",
+    threshold = 0.2,
+    rootMargin = "0px 0px -100px 0px",
     once = true,
   } = options;
+
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = elementRef.current;
     if (!element) return;
 
-    // Add initial scroll animation class if not present
-    if (
-      !element.classList.contains("scroll-animation") &&
-      !element.classList.contains("scroll-animation-left") &&
-      !element.classList.contains("scroll-animation-right") &&
-      !element.classList.contains("scroll-animation-scale")
-    ) {
-      element.classList.add("scroll-animation");
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          console.log(
+            "Element intersecting:",
+            entry.isIntersecting,
+            entry.target,
+          );
+
           if (entry.isIntersecting) {
-            // Find all children with scroll-animation classes and animate them
+            // Find and animate all elements with animation classes
             const animatedElements = entry.target.querySelectorAll(
-              ".scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale",
+              ".scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale, .scroll-animation-rotate, .scroll-animation-bounce",
             );
 
+            console.log("Found animated elements:", animatedElements.length);
+
+            // Animate each element with elegant stagger
             animatedElements.forEach((el, index) => {
               setTimeout(() => {
                 el.classList.add("animate-in");
-              }, index * 100); // Stagger the animations
+                console.log("Added animate-in to:", el);
+              }, index * 200); // Slower stagger for more elegant reveal
             });
+
+            // Animate the container itself if it has animation classes
+            const containerClasses = [
+              "scroll-animation",
+              "scroll-animation-left",
+              "scroll-animation-right",
+              "scroll-animation-scale",
+              "scroll-animation-rotate",
+              "scroll-animation-bounce",
+            ];
+            const hasAnimationClass = containerClasses.some((cls) =>
+              entry.target.classList.contains(cls),
+            );
+
+            if (hasAnimationClass) {
+              entry.target.classList.add("animate-in");
+              console.log("Added animate-in to container:", entry.target);
+            }
 
             if (once) {
               observer.unobserve(entry.target);
             }
-          } else if (!once) {
-            const animatedElements = entry.target.querySelectorAll(
-              ".scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale",
-            );
-            animatedElements.forEach((el) => {
-              el.classList.remove("animate-in");
-            });
           }
         });
       },

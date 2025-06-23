@@ -1,92 +1,80 @@
-import { ExternalLink, Github } from "lucide-react";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: string;
   tags: string[];
-  liveUrl?: string;
-  codeUrl?: string;
-  featured?: boolean;
+  imageUrl: string;
+  link: string;
+  overlayText: string;
 }
 
-export default function ProjectCard({
+const ProjectCard = ({
   title,
   description,
-  image,
   tags,
-  liveUrl,
-  codeUrl,
-  featured = false,
-}: ProjectCardProps) {
+  imageUrl,
+  link,
+  overlayText
+}: ProjectCardProps) => {
   return (
-    <Card
-      className={`group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden ${featured ? "ring-2 ring-portfolio-primary/20" : ""}`}
+    <Link 
+      to={link} 
+      className="block h-full no-underline text-inherit"
     >
-      <div className="relative overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        {featured && (
-          <Badge className="absolute top-4 left-4 bg-portfolio-primary text-white">
-            Featured
-          </Badge>
-        )}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <div className="flex space-x-2">
-            {liveUrl && (
-              <Button
-                size="sm"
-                variant="secondary"
-                className="bg-white/90 hover:bg-white"
-                asChild
+      <motion.div 
+        className="group relative h-full"
+        whileHover={{ scale: 1.03 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      >
+        <Card className="h-full overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+          <div className="relative h-48 overflow-hidden">
+            <motion.img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-full object-cover"
+              initial={{ scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+            />
+            <motion.div 
+              className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+            >
+              <motion.span 
+                className="text-white font-medium text-lg"
+                initial={{ y: 20 }}
+                whileHover={{ y: 0 }}
               >
-                <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="h-4 w-4 mr-1" />
-                  Live
-                </a>
-              </Button>
-            )}
-            {codeUrl && (
-              <Button
-                size="sm"
-                variant="secondary"
-                className="bg-white/90 hover:bg-white"
-                asChild
-              >
-                <a href={codeUrl} target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4 mr-1" />
-                  Code
-                </a>
-              </Button>
-            )}
+                {overlayText}
+              </motion.span>
+            </motion.div>
           </div>
-        </div>
-      </div>
-
-      <CardContent className="p-6">
-        <h3 className="font-semibold text-lg mb-3 group-hover:text-portfolio-primary transition-colors">
-          {title}
-        </h3>
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-          {description}
-        </p>
-      </CardContent>
-
-      <CardFooter className="px-6 pb-6">
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag, index) => (
-            <Badge key={index} variant="outline" className="text-xs">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-      </CardFooter>
-    </Card>
+          <CardContent className="p-6">
+            <h3 className="font-bold text-xl mb-2 group-hover:text-portfolio-primary transition-colors">
+              {title}
+            </h3>
+            <p className="text-muted-foreground mb-4">{description}</p>
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag, index) => (
+                <Badge 
+                  key={index} 
+                  variant="outline"
+                  className="text-xs group-hover:border-portfolio-primary/50 transition-colors"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </Link>
   );
-}
+};
+
+export default ProjectCard;

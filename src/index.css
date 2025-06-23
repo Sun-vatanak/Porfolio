@@ -151,11 +151,12 @@
     text-wrap: balance;
   }
 
-  /* Scroll Animations */
+  /* Beautiful Slow Scroll Animations */
   .scroll-animation {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(80px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
 
   .scroll-animation.animate-in {
@@ -165,8 +166,9 @@
 
   .scroll-animation-left {
     opacity: 0;
-    transform: translateX(-50px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-80px);
+    transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
 
   .scroll-animation-left.animate-in {
@@ -176,8 +178,9 @@
 
   .scroll-animation-right {
     opacity: 0;
-    transform: translateX(50px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(80px);
+    transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
 
   .scroll-animation-right.animate-in {
@@ -187,18 +190,234 @@
 
   .scroll-animation-scale {
     opacity: 0;
-    transform: scale(0.8);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.6) translateY(40px);
+    transition: all 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
 
   .scroll-animation-scale.animate-in {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
 
-  /* Immediate visibility for debugging */
-  .animate-immediately {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+  .scroll-animation-rotate {
+    opacity: 0;
+    transform: rotate(-8deg) scale(0.8) translateY(40px);
+    transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
+
+  .scroll-animation-rotate.animate-in {
+    opacity: 1;
+    transform: rotate(0deg) scale(1) translateY(0);
+  }
+
+  .scroll-animation-bounce {
+    opacity: 0;
+    transform: translateY(100px) scale(0.7);
+    transition: all 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform, opacity;
+  }
+
+  .scroll-animation-bounce.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Elegant fade animation */
+  .scroll-animation-fade {
+    opacity: 0;
+    transition: opacity 2s ease-out;
+  }
+
+  .scroll-animation-fade.animate-in {
+    opacity: 1;
+  }
+
+  /* Smooth slide up with blur effect */
+  .scroll-animation-blur {
+    opacity: 0;
+    transform: translateY(60px);
+    filter: blur(10px);
+    transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-animation-blur.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+
+  /* Staggered delays for sequential animations */
+  .scroll-animation-delay-1 {
+    transition-delay: 0.2s;
+  }
+  .scroll-animation-delay-2 {
+    transition-delay: 0.4s;
+  }
+  .scroll-animation-delay-3 {
+    transition-delay: 0.6s;
+  }
+  .scroll-animation-delay-4 {
+    transition-delay: 0.8s;
+  }
+  .scroll-animation-delay-5 {
+    transition-delay: 1s;
+  }
+
+  /* Parallax effect for depth */
+  .scroll-parallax {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+  }
+
+  /* Smooth card hover animations */
+  .animate-card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Text reveal animation */
+  .scroll-animation-text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-animation-text.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Performance optimization for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-animation,
+    .scroll-animation-left,
+    .scroll-animation-right,
+    .scroll-animation-scale,
+    .scroll-animation-rotate,
+    .scroll-animation-bounce,
+    .scroll-animation-fade,
+    .scroll-animation-blur,
+    .scroll-animation-text {
+      transition: none;
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+}
+/* Add these to your CSS file */
+/* Animation classes */
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, -10px) rotate(2deg); }
+  50% { transform: translate(10px, 0) rotate(0deg); }
+  75% { transform: translate(5px, 10px) rotate(-2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes letter-fade {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+.animate-letter-fade span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: letter-fade 0.5s forwards;
+}
+
+.animate-letter-fade span:nth-child(1) { animation-delay: 0.1s; }
+.animate-letter-fade span:nth-child(2) { animation-delay: 0.2s; }
+/* Continue for each letter or use JS to calculate */
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-20px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+/* Animation delays for floating elements */
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
 }
