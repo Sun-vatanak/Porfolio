@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Mail, MapPin, Calendar, ArrowRight, Star, Quote } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const featuredProjects = [
   {
@@ -65,17 +66,22 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const aboutRef = useScrollAnimation();
+  const projectsRef = useScrollAnimation();
+  const experienceRef = useScrollAnimation();
+  const testimonialsRef = useScrollAnimation();
+
   return (
     <Layout>
       {/* Hero Section */}
       <Hero />
 
       {/* About Section */}
-      <section id="about" className="py-20">
+      <section id="about" className="py-20" ref={aboutRef}>
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+            <div className="scroll-animation-left">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
                 About Me
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
@@ -107,7 +113,7 @@ const Index = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
-            <div className="relative">
+            <div className="relative scroll-animation-right">
               <div className="relative rounded-2xl overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face"
@@ -135,10 +141,10 @@ const Index = () => {
       <SkillsSection />
 
       {/* Projects Section */}
-      <section id="projects" className="py-20">
+      <section id="projects" className="py-20" ref={projectsRef}>
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <div className="text-center mb-16 scroll-animation">
+            <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
               Featured Projects
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -167,10 +173,10 @@ const Index = () => {
       </section>
 
       {/* Experience Section */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-muted/30" ref={experienceRef}>
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <div className="text-center mb-16 scroll-animation">
+            <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
               Work Experience
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -246,10 +252,10 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20">
+      <section className="py-20" ref={testimonialsRef}>
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <div className="text-center mb-16 scroll-animation">
+            <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
               What Clients Say
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -259,7 +265,11 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card
+                key={index}
+                className="hover:shadow-lg transition-shadow scroll-animation-scale"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
                 <CardContent className="p-6">
                   <Quote className="h-8 w-8 text-portfolio-primary/20 mb-4" />
                   <p className="text-muted-foreground mb-6 italic">
@@ -291,7 +301,7 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-portfolio-primary to-portfolio-secondary">
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-sans font-bold text-white mb-4">
             Ready to Start Your Project?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">

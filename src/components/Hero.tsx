@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { ArrowRight, Download, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const heroRef = useScrollAnimation({ threshold: 0.2 });
 
   useEffect(() => {
     setIsVisible(true);
@@ -33,10 +35,8 @@ export default function Hero() {
         style={{ animationDelay: "4s" }}
       />
 
-      <div className="container-custom text-center relative z-10">
-        <div
-          className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
+      <div className="container-custom text-center relative z-10" ref={heroRef}>
+        <div className="scroll-animation">
           {/* Badge */}
           <Badge
             variant="outline"
@@ -46,7 +46,7 @@ export default function Hero() {
           </Badge>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-balance">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold mb-6 text-balance">
             <span className="block">Hello, I'm</span>
             <span className="gradient-text">Sun Vatanak</span>
           </h1>
@@ -67,7 +67,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <Button
               size="lg"
-              className="bg-portfolio-primary hover:bg-portfolio-primary/90 text-white group"
+              className="bg-portfolio-primary hover:bg-portfolio-primary/90 text-white group transform hover:scale-105 transition-all duration-200"
               onClick={() =>
                 document
                   .getElementById("projects")
@@ -80,7 +80,7 @@ export default function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="border-portfolio-primary/20 hover:bg-portfolio-primary/10"
+              className="border-portfolio-primary/20 hover:bg-portfolio-primary/10 transform hover:scale-105 transition-all duration-200"
             >
               <Download className="mr-2 h-4 w-4" />
               Download CV
@@ -89,7 +89,10 @@ export default function Hero() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
-            <div className="text-center">
+            <div
+              className="text-center scroll-animation-scale"
+              style={{ animationDelay: "0.2s" }}
+            >
               <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
                 50+
               </div>
@@ -97,7 +100,10 @@ export default function Hero() {
                 Projects Completed
               </div>
             </div>
-            <div className="text-center">
+            <div
+              className="text-center scroll-animation-scale"
+              style={{ animationDelay: "0.4s" }}
+            >
               <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
                 3+
               </div>
@@ -105,13 +111,19 @@ export default function Hero() {
                 Years Experience
               </div>
             </div>
-            <div className="text-center">
+            <div
+              className="text-center scroll-animation-scale"
+              style={{ animationDelay: "0.6s" }}
+            >
               <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
                 25+
               </div>
               <div className="text-sm text-muted-foreground">Happy Clients</div>
             </div>
-            <div className="text-center">
+            <div
+              className="text-center scroll-animation-scale"
+              style={{ animationDelay: "0.8s" }}
+            >
               <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
                 100%
               </div>

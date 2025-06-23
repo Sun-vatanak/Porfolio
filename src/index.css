@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -120,7 +120,7 @@
   h4,
   h5,
   h6 {
-    @apply font-display;
+    @apply font-sans;
   }
 }
 
@@ -149,5 +149,49 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .scroll-animation {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animation.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-animation-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animation-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-animation-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animation-right.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-animation-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animation-scale.animate-in {
+    opacity: 1;
+    transform: scale(1);
   }
 }

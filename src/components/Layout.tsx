@@ -42,7 +42,7 @@ export default function Layout({ children }: LayoutProps) {
             {/* Logo */}
             <Link
               to="/"
-              className="font-display font-bold text-xl gradient-text hover:scale-105 transition-transform"
+              className="font-sans font-bold text-xl gradient-text hover:scale-105 transition-transform"
             >
               Sun Vatanak
             </Link>
