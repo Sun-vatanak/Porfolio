@@ -179,62 +179,235 @@ export default function About() {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-2xl font-display font-bold mb-8">
+              <h2 className="text-2xl font-sans font-bold mb-8 flex items-center gap-3">
+                <span className="text-3xl">🎓</span>
                 Education
               </h2>
-              <div className="space-y-6">
-                <div className="border-l-2 border-portfolio-primary pl-6">
-                  <Badge className="mb-2">2017 - 2021</Badge>
-                  <h3 className="font-semibold text-lg">
-                    Bachelor of Computer Science
-                  </h3>
-                  <p className="text-portfolio-primary font-medium">
-                    Royal University of Phnom Penh
-                  </p>
-                  <p className="text-muted-foreground mt-2">
-                    Focused on Human-Computer Interaction and software
-                    development
-                  </p>
-                </div>
+              <div className="space-y-8">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="border-l-4 border-portfolio-primary pl-6">
+                      <Badge className="mb-3">2017 - 2021</Badge>
+                      <h3 className="font-bold text-xl mb-2">
+                        Bachelor of Computer Science
+                      </h3>
+                      <p className="text-portfolio-primary font-semibold mb-3">
+                        Royal University of Phnom Penh
+                      </p>
+                      <p className="text-muted-foreground mb-4">
+                        Specialized in Human-Computer Interaction, User
+                        Interface Design, and Software Development. Graduated
+                        with honors (GPA: 3.8/4.0).
+                      </p>
+                      <div className="space-y-2">
+                        <div className="text-sm">
+                          <strong>Key Courses:</strong>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="text-xs">
+                            Human-Computer Interaction
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            User Interface Design
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            Software Engineering
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            Database Systems
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            Web Development
+                          </Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="border-l-4 border-portfolio-secondary pl-6">
+                      <Badge variant="secondary" className="mb-3">
+                        2021 - 2022
+                      </Badge>
+                      <h3 className="font-bold text-xl mb-2">
+                        UX/UI Design Bootcamp
+                      </h3>
+                      <p className="text-portfolio-secondary font-semibold mb-3">
+                        Cambodia Academy of Digital Technology
+                      </p>
+                      <p className="text-muted-foreground mb-4">
+                        Intensive 12-month program focused on modern UX/UI
+                        design practices, user research methodologies, and
+                        industry-standard design tools.
+                      </p>
+                      <div className="space-y-2">
+                        <div className="text-sm">
+                          <strong>Key Focus Areas:</strong>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="text-xs">
+                            Design Thinking
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            User Research
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            Prototyping
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            Design Systems
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            Usability Testing
+                          </Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
 
             <div>
-              <h2 className="text-2xl font-display font-bold mb-8">
-                Certifications
+              <h2 className="text-2xl font-sans font-bold mb-8 flex items-center gap-3">
+                <span className="text-3xl">🏆</span>
+                Certifications & Training
               </h2>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Heart className="h-5 w-5 text-portfolio-primary flex-shrink-0" />
-                  <div>
-                    <div className="font-medium">
-                      UX Design Professional Certificate
+              <div className="space-y-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-portfolio-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                          alt="Google"
+                          className="w-6 h-6 object-contain"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">
+                          UX Design Professional Certificate
+                        </h3>
+                        <p className="text-portfolio-primary font-medium">
+                          Google
+                        </p>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Completed: March 2022
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Comprehensive program covering UX research,
+                          wireframing, prototyping, and usability testing.
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-sm text-muted-foreground">
-                      Google, 2022
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-portfolio-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl">🎨</span>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">
+                          Interaction Design Specialization
+                        </h3>
+                        <p className="text-portfolio-secondary font-medium">
+                          UC San Diego (Coursera)
+                        </p>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Completed: September 2021
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Advanced course in interaction design principles,
+                          prototyping, and user-centered design methodology.
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Heart className="h-5 w-5 text-portfolio-primary flex-shrink-0" />
-                  <div>
-                    <div className="font-medium">
-                      Interaction Design Specialization
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-portfolio-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <img
+                          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                          alt="Figma"
+                          className="w-6 h-6 object-contain"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">
+                          Advanced Figma Techniques
+                        </h3>
+                        <p className="text-portfolio-accent font-medium">
+                          Design+Code
+                        </p>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Completed: January 2023
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Master-level training in Figma's advanced features,
+                          components, auto-layout, and design systems.
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-sm text-muted-foreground">
-                      UC San Diego, 2021
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl">💡</span>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">
+                          Design Systems Certification
+                        </h3>
+                        <p className="text-blue-600 font-medium">
+                          Nielsen Norman Group
+                        </p>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Completed: June 2023
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Specialized training in creating and maintaining
+                          scalable design systems for enterprise applications.
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Heart className="h-5 w-5 text-portfolio-primary flex-shrink-0" />
-                  <div>
-                    <div className="font-medium">Advanced Figma Techniques</div>
-                    <div className="text-sm text-muted-foreground">
-                      Design+Code, 2023
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl">📊</span>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">
+                          User Research Methods
+                        </h3>
+                        <p className="text-green-600 font-medium">
+                          Interaction Design Foundation
+                        </p>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Completed: October 2022
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          In-depth training on quantitative and qualitative user
+                          research methods and data analysis.
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
