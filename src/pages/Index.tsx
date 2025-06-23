@@ -2,7 +2,6 @@ import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectCard from "@/components/ProjectCard";
-import AnimationTest from "@/components/AnimationTest";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -78,9 +77,6 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <Hero />
-
-      {/* Animation Test - Remove this after testing */}
-      <AnimationTest />
 
       {/* About Section */}
       <section id="about" className="py-20" ref={aboutRef}>
@@ -163,7 +159,7 @@ const Index = () => {
             {featuredProjects.map((project, index) => (
               <div
                 key={index}
-                className={`scroll-animation-rotate scroll-animation-delay-${index + 1}`}
+                className={`scroll-animation-scale scroll-animation-delay-${index + 1} animate-card-hover`}
               >
                 <ProjectCard {...project} />
               </div>
@@ -201,7 +197,7 @@ const Index = () => {
               <div className="absolute left-8 top-0 bottom-0 w-px bg-border"></div>
 
               <div className="space-y-12">
-                <div className="relative flex items-start scroll-animation-left scroll-animation-delay-1">
+                <div className="relative flex items-start scroll-animation-text scroll-animation-delay-1">
                   <div className="absolute left-6 w-4 h-4 bg-portfolio-primary rounded-full"></div>
                   <div className="ml-16">
                     <Badge className="mb-2">2022 - Present</Badge>
@@ -219,7 +215,7 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div className="relative flex items-start scroll-animation-left scroll-animation-delay-2">
+                <div className="relative flex items-start scroll-animation-text scroll-animation-delay-2">
                   <div className="absolute left-6 w-4 h-4 bg-portfolio-secondary rounded-full"></div>
                   <div className="ml-16">
                     <Badge variant="secondary" className="mb-2">
@@ -237,7 +233,7 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div className="relative flex items-start scroll-animation-left scroll-animation-delay-3">
+                <div className="relative flex items-start scroll-animation-text scroll-animation-delay-3">
                   <div className="absolute left-6 w-4 h-4 bg-portfolio-accent rounded-full"></div>
                   <div className="ml-16">
                     <Badge variant="outline" className="mb-2">
@@ -278,7 +274,7 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Formal Education */}
-            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 scroll-animation-left">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 scroll-animation-blur scroll-animation-delay-1 animate-card-hover">
               <CardContent className="p-8">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-16 h-16 bg-portfolio-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -316,7 +312,7 @@ const Index = () => {
             </Card>
 
             {/* Design Bootcamp */}
-            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 scroll-animation-right">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 scroll-animation-blur scroll-animation-delay-2 animate-card-hover">
               <CardContent className="p-8">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-16 h-16 bg-portfolio-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -450,7 +446,7 @@ const Index = () => {
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className={`hover:shadow-lg transition-shadow scroll-animation-scale scroll-animation-delay-${index + 1}`}
+                className={`hover:shadow-lg transition-shadow scroll-animation-fade scroll-animation-delay-${index + 1} animate-card-hover`}
               >
                 <CardContent className="p-6">
                   <Quote className="h-8 w-8 text-portfolio-primary/20 mb-4" />

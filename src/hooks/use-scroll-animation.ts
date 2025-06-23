@@ -8,8 +8,8 @@ interface UseScrollAnimationOptions {
 
 export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const {
-    threshold = 0.1,
-    rootMargin = "0px 0px -50px 0px",
+    threshold = 0.2,
+    rootMargin = "0px 0px -100px 0px",
     once = true,
   } = options;
 
@@ -48,12 +48,12 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
 
             console.log("Found animated elements:", animatedElements.length);
 
-            // Animate each element with stagger
+            // Animate each element with elegant stagger
             animatedElements.forEach((el, index) => {
               setTimeout(() => {
                 el.classList.add("animate-in");
                 console.log("Added animate-in to:", el);
-              }, index * 100);
+              }, index * 200); // Slower stagger for more elegant reveal
             });
 
             // Animate the container itself if it has animation classes
