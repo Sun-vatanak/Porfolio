@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import ScrollProgress from "./ScrollProgress";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -35,6 +36,9 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Scroll Progress */}
+      <ScrollProgress />
+
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 glass-effect">
         <div className="container-custom">

@@ -151,54 +151,126 @@
     text-wrap: balance;
   }
 
-  /* Scroll Animations */
+  /* Enhanced Scroll Animations */
   .scroll-animation {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
   }
 
-  .scroll-animation.animate-in {
+  .scroll-animation.animate-in,
+  .scroll-animation.visible {
     opacity: 1;
     transform: translateY(0);
   }
 
   .scroll-animation-left {
     opacity: 0;
-    transform: translateX(-50px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-60px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
   }
 
-  .scroll-animation-left.animate-in {
+  .scroll-animation-left.animate-in,
+  .scroll-animation-left.visible {
     opacity: 1;
     transform: translateX(0);
   }
 
   .scroll-animation-right {
     opacity: 0;
-    transform: translateX(50px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(60px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
   }
 
-  .scroll-animation-right.animate-in {
+  .scroll-animation-right.animate-in,
+  .scroll-animation-right.visible {
     opacity: 1;
     transform: translateX(0);
   }
 
   .scroll-animation-scale {
     opacity: 0;
-    transform: scale(0.8);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.7) rotateY(15deg);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
   }
 
-  .scroll-animation-scale.animate-in {
+  .scroll-animation-scale.animate-in,
+  .scroll-animation-scale.visible {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotateY(0deg);
   }
 
-  /* Immediate visibility for debugging */
-  .animate-immediately {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+  /* Parallax effect for background elements */
+  .scroll-parallax {
+    transition: transform 0.6s ease-out;
+    will-change: transform;
+  }
+
+  /* Advanced animation variants */
+  .scroll-animation-fade {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
+
+  .scroll-animation-fade.animate-in {
+    opacity: 1;
+  }
+
+  .scroll-animation-rotate {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-animation-rotate.animate-in {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .scroll-animation-bounce {
+    opacity: 0;
+    transform: translateY(100px) scale(0.8);
+    transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .scroll-animation-bounce.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Staggered delays */
+  .scroll-animation-delay-1 {
+    transition-delay: 0.1s;
+  }
+  .scroll-animation-delay-2 {
+    transition-delay: 0.2s;
+  }
+  .scroll-animation-delay-3 {
+    transition-delay: 0.3s;
+  }
+  .scroll-animation-delay-4 {
+    transition-delay: 0.4s;
+  }
+  .scroll-animation-delay-5 {
+    transition-delay: 0.5s;
+  }
+
+  /* Performance optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-animation,
+    .scroll-animation-left,
+    .scroll-animation-right,
+    .scroll-animation-scale,
+    .scroll-animation-fade,
+    .scroll-animation-rotate,
+    .scroll-animation-bounce {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 }

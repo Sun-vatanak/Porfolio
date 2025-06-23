@@ -12,7 +12,21 @@ export default function Hero() {
     // Immediately show animations
     setIsVisible(true);
 
-    // Also add animate-in class to any scroll animations for debugging
+    // Add scroll-based parallax effect
+    const handleScroll = () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll(".scroll-parallax");
+
+      parallaxElements.forEach((element, index) => {
+        const speed = 0.5 + index * 0.1;
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Also add animate-in class to any scroll animations
     const timer = setTimeout(() => {
       const elements = document.querySelectorAll(
         ".scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale",
@@ -20,7 +34,10 @@ export default function Hero() {
       elements.forEach((el) => el.classList.add("animate-in"));
     }, 500);
 
-    return () => clearTimeout(timer);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
   }, []);
 
   const scrollToNextSection = () => {
@@ -35,15 +52,25 @@ export default function Hero() {
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-portfolio-primary/5 via-background to-portfolio-secondary/5" />
 
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-portfolio-primary/10 rounded-full animate-float" />
+      {/* Floating Elements with Parallax */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-portfolio-primary/10 rounded-full animate-float scroll-parallax" />
       <div
-        className="absolute top-40 right-20 w-16 h-16 bg-portfolio-secondary/10 rounded-full animate-float"
+        className="absolute top-40 right-20 w-16 h-16 bg-portfolio-secondary/10 rounded-full animate-float scroll-parallax"
         style={{ animationDelay: "2s" }}
       />
       <div
-        className="absolute bottom-40 left-20 w-24 h-24 bg-portfolio-accent/10 rounded-full animate-float"
+        className="absolute bottom-40 left-20 w-24 h-24 bg-portfolio-accent/10 rounded-full animate-float scroll-parallax"
         style={{ animationDelay: "4s" }}
+      />
+
+      {/* Additional floating elements for depth */}
+      <div
+        className="absolute top-60 right-10 w-12 h-12 bg-portfolio-primary/5 rounded-full animate-float scroll-parallax"
+        style={{ animationDelay: "1s" }}
+      />
+      <div
+        className="absolute bottom-60 right-40 w-8 h-8 bg-portfolio-secondary/8 rounded-full animate-float scroll-parallax"
+        style={{ animationDelay: "3s" }}
       />
 
       <div className="container-custom text-center relative z-10" ref={heroRef}>

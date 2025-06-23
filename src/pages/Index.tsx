@@ -66,10 +66,12 @@ const testimonials = [
 ];
 
 const Index = () => {
-  const aboutRef = useScrollAnimation();
-  const projectsRef = useScrollAnimation();
-  const experienceRef = useScrollAnimation();
-  const testimonialsRef = useScrollAnimation();
+  const aboutRef = useScrollAnimation({ threshold: 0.2 });
+  const projectsRef = useScrollAnimation({ threshold: 0.1 });
+  const experienceRef = useScrollAnimation({ threshold: 0.15 });
+  const educationRef = useScrollAnimation({ threshold: 0.1 });
+  const testimonialsRef = useScrollAnimation({ threshold: 0.2 });
+  const ctaRef = useScrollAnimation({ threshold: 0.3 });
 
   return (
     <Layout>
@@ -157,7 +159,7 @@ const Index = () => {
             {featuredProjects.map((project, index) => (
               <div
                 key={index}
-                className={`scroll-animation-scale scroll-animation-delay-${Math.min(index + 1, 4)}`}
+                className={`scroll-animation-rotate scroll-animation-delay-${index + 1}`}
               >
                 <ProjectCard {...project} />
               </div>
@@ -257,7 +259,7 @@ const Index = () => {
       </section>
 
       {/* Education Section */}
-      <section className="py-20">
+      <section className="py-20" ref={educationRef}>
         <div className="container-custom">
           <div className="text-center mb-16 scroll-animation">
             <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4 flex items-center justify-center gap-3">
@@ -475,8 +477,11 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-portfolio-primary to-portfolio-secondary">
-        <div className="container-custom text-center">
+      <section
+        className="py-20 bg-gradient-to-r from-portfolio-primary to-portfolio-secondary"
+        ref={ctaRef}
+      >
+        <div className="container-custom text-center scroll-animation-bounce">
           <h2 className="text-3xl md:text-4xl font-sans font-bold text-white mb-4">
             Ready to Start Your Project?
           </h2>
