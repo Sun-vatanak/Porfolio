@@ -155,7 +155,12 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredProjects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
+              <div
+                key={index}
+                className={`scroll-animation-scale scroll-animation-delay-${Math.min(index + 1, 4)}`}
+              >
+                <ProjectCard {...project} />
+              </div>
             ))}
           </div>
 
@@ -190,7 +195,7 @@ const Index = () => {
               <div className="absolute left-8 top-0 bottom-0 w-px bg-border"></div>
 
               <div className="space-y-12">
-                <div className="relative flex items-start">
+                <div className="relative flex items-start scroll-animation-left scroll-animation-delay-1">
                   <div className="absolute left-6 w-4 h-4 bg-portfolio-primary rounded-full"></div>
                   <div className="ml-16">
                     <Badge className="mb-2">2022 - Present</Badge>
@@ -208,7 +213,7 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div className="relative flex items-start">
+                <div className="relative flex items-start scroll-animation-left scroll-animation-delay-2">
                   <div className="absolute left-6 w-4 h-4 bg-portfolio-secondary rounded-full"></div>
                   <div className="ml-16">
                     <Badge variant="secondary" className="mb-2">
@@ -226,7 +231,7 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div className="relative flex items-start">
+                <div className="relative flex items-start scroll-animation-left scroll-animation-delay-3">
                   <div className="absolute left-6 w-4 h-4 bg-portfolio-accent rounded-full"></div>
                   <div className="ml-16">
                     <Badge variant="outline" className="mb-2">
@@ -267,8 +272,7 @@ const Index = () => {
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-shadow scroll-animation-scale"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className={`hover:shadow-lg transition-shadow scroll-animation-scale scroll-animation-delay-${index + 1}`}
               >
                 <CardContent className="p-6">
                   <Quote className="h-8 w-8 text-portfolio-primary/20 mb-4" />

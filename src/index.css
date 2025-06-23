@@ -153,8 +153,10 @@
 
   .scroll-animation {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(40px);
+    transition:
+      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .scroll-animation.animate-in {
@@ -164,8 +166,10 @@
 
   .scroll-animation-left {
     opacity: 0;
-    transform: translateX(-30px);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-40px);
+    transition:
+      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .scroll-animation-left.animate-in {
@@ -175,8 +179,10 @@
 
   .scroll-animation-right {
     opacity: 0;
-    transform: translateX(30px);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(40px);
+    transition:
+      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .scroll-animation-right.animate-in {
@@ -186,12 +192,31 @@
 
   .scroll-animation-scale {
     opacity: 0;
-    transform: scale(0.95);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.9);
+    transition:
+      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .scroll-animation-scale.animate-in {
     opacity: 1;
     transform: scale(1);
+  }
+
+  /* Staggered animation delays */
+  .scroll-animation-delay-1 {
+    transition-delay: 0.1s;
+  }
+
+  .scroll-animation-delay-2 {
+    transition-delay: 0.2s;
+  }
+
+  .scroll-animation-delay-3 {
+    transition-delay: 0.3s;
+  }
+
+  .scroll-animation-delay-4 {
+    transition-delay: 0.4s;
   }
 }

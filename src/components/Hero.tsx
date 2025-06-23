@@ -6,7 +6,8 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
-  const heroRef = useScrollAnimation({ threshold: 0.2 });
+  const heroRef = useScrollAnimation({ threshold: 0.1, rootMargin: "0px" });
+  const statsRef = useScrollAnimation({ threshold: 0.3 });
 
   useEffect(() => {
     setIsVisible(true);
@@ -88,11 +89,11 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
-            <div
-              className="text-center scroll-animation-scale"
-              style={{ animationDelay: "0.2s" }}
-            >
+          <div
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto"
+            ref={statsRef}
+          >
+            <div className="text-center scroll-animation-scale scroll-animation-delay-1">
               <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
                 50+
               </div>
@@ -100,10 +101,7 @@ export default function Hero() {
                 Projects Completed
               </div>
             </div>
-            <div
-              className="text-center scroll-animation-scale"
-              style={{ animationDelay: "0.4s" }}
-            >
+            <div className="text-center scroll-animation-scale scroll-animation-delay-2">
               <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
                 3+
               </div>
@@ -111,19 +109,13 @@ export default function Hero() {
                 Years Experience
               </div>
             </div>
-            <div
-              className="text-center scroll-animation-scale"
-              style={{ animationDelay: "0.6s" }}
-            >
+            <div className="text-center scroll-animation-scale scroll-animation-delay-3">
               <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
                 25+
               </div>
               <div className="text-sm text-muted-foreground">Happy Clients</div>
             </div>
-            <div
-              className="text-center scroll-animation-scale"
-              style={{ animationDelay: "0.8s" }}
-            >
+            <div className="text-center scroll-animation-scale scroll-animation-delay-4">
               <div className="text-2xl md:text-3xl font-bold text-portfolio-primary">
                 100%
               </div>
