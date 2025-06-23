@@ -33,7 +33,6 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
     const element = elementRef.current;
     if (!element) return;
 
-    // Add initial scroll animation class if not present
     if (
       !element.classList.contains("scroll-animation") &&
       !element.classList.contains("scroll-animation-left") &&
