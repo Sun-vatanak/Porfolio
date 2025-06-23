@@ -1,42 +1,323 @@
+import Layout from "@/components/Layout";
+import Hero from "@/components/Hero";
+import SkillsSection from "@/components/SkillsSection";
+import ProjectCard from "@/components/ProjectCard";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Mail, MapPin, Calendar, ArrowRight, Star, Quote } from "lucide-react";
+
+const featuredProjects = [
+  {
+    title: "E-commerce Mobile App",
+    description:
+      "Complete UX/UI design for a modern e-commerce mobile application with intuitive navigation, seamless checkout process, and engaging product discovery features.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop&crop=center",
+    tags: ["Mobile Design", "E-commerce", "User Research", "Prototyping"],
+    liveUrl: "https://example.com",
+    featured: true,
+  },
+  {
+    title: "SaaS Dashboard Design",
+    description:
+      "Modern dashboard interface for a project management SaaS platform with data visualization, real-time updates, and responsive design across all devices.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop&crop=center",
+    tags: ["Web Design", "SaaS", "Dashboard", "Data Visualization"],
+    liveUrl: "https://example.com",
+    featured: true,
+  },
+  {
+    title: "Banking App Redesign",
+    description:
+      "Complete redesign of a mobile banking application focusing on security, usability, and accessibility for users of all ages and technical backgrounds.",
+    image:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop&crop=center",
+    tags: ["Mobile App", "Banking", "Security", "Accessibility"],
+    liveUrl: "https://example.com",
+    featured: true,
+  },
+];
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Product Manager at TechCorp",
+    content:
+      "Sun's attention to detail and user-centered approach made our app redesign a huge success. User engagement increased by 40% after implementation.",
+    rating: 5,
+  },
+  {
+    name: "Michael Chen",
+    role: "CEO at StartupXYZ",
+    content:
+      "Working with Sun was a game-changer for our startup. Their designs not only looked amazing but also significantly improved our conversion rates.",
+    rating: 5,
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Marketing Director",
+    content:
+      "Sun delivered exceptional designs on time and within budget. Their communication throughout the project was outstanding.",
+    rating: 5,
+  },
+];
+
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-      </div>
-    </div>
+    <Layout>
+      {/* Hero Section */}
+      <Hero />
+
+      {/* About Section */}
+      <section id="about" className="py-20">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                About Me
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                I'm a passionate UX/UI designer with over 3 years of experience
+                creating digital experiences that users love. I believe great
+                design should be both beautiful and functional.
+              </p>
+              <p className="text-muted-foreground mb-8">
+                My approach combines user research, creative design thinking,
+                and technical understanding to deliver solutions that not only
+                look great but also drive business results.
+              </p>
+              <div className="flex flex-wrap gap-4 mb-8">
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <MapPin className="h-4 w-4 mr-2" />
+                  Phnom Penh, Cambodia
+                </div>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  Available for projects
+                </div>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <Mail className="h-4 w-4 mr-2" />
+                  sun.vatanak@example.com
+                </div>
+              </div>
+              <Button className="bg-portfolio-primary hover:bg-portfolio-primary/90">
+                Get In Touch
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face"
+                  alt="Sun Vatanak"
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </div>
+              <Card className="absolute -bottom-6 -left-6 w-48 bg-white/95 backdrop-blur-sm">
+                <CardContent className="p-4">
+                  <div className="text-2xl font-bold text-portfolio-primary">
+                    3+
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Years of Experience
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <SkillsSection />
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+              Featured Projects
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              A selection of my recent work showcasing different design
+              challenges and solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {featuredProjects.map((project, index) => (
+              <ProjectCard key={index} {...project} />
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-portfolio-primary/20 hover:bg-portfolio-primary/10"
+            >
+              View All Projects
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+              Work Experience
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              My professional journey in UX/UI design
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 top-0 bottom-0 w-px bg-border"></div>
+
+              <div className="space-y-12">
+                <div className="relative flex items-start">
+                  <div className="absolute left-6 w-4 h-4 bg-portfolio-primary rounded-full"></div>
+                  <div className="ml-16">
+                    <Badge className="mb-2">2022 - Present</Badge>
+                    <h3 className="font-semibold text-lg">
+                      Senior UX/UI Designer
+                    </h3>
+                    <p className="text-portfolio-primary font-medium mb-2">
+                      TechFlow Solutions
+                    </p>
+                    <p className="text-muted-foreground">
+                      Lead designer for multiple client projects, specializing
+                      in SaaS platforms and mobile applications. Increased user
+                      engagement by 45% across projects.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-start">
+                  <div className="absolute left-6 w-4 h-4 bg-portfolio-secondary rounded-full"></div>
+                  <div className="ml-16">
+                    <Badge variant="secondary" className="mb-2">
+                      2021 - 2022
+                    </Badge>
+                    <h3 className="font-semibold text-lg">UX/UI Designer</h3>
+                    <p className="text-portfolio-primary font-medium mb-2">
+                      Digital Agency Pro
+                    </p>
+                    <p className="text-muted-foreground">
+                      Designed user interfaces for e-commerce and corporate
+                      websites. Collaborated with development teams to ensure
+                      pixel-perfect implementation.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-start">
+                  <div className="absolute left-6 w-4 h-4 bg-portfolio-accent rounded-full"></div>
+                  <div className="ml-16">
+                    <Badge variant="outline" className="mb-2">
+                      2020 - 2021
+                    </Badge>
+                    <h3 className="font-semibold text-lg">
+                      Junior UX Designer
+                    </h3>
+                    <p className="text-portfolio-primary font-medium mb-2">
+                      StartUp Hub
+                    </p>
+                    <p className="text-muted-foreground">
+                      Started my design career working on various startup
+                      projects. Learned user research methodologies and design
+                      thinking processes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+              What Clients Say
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Feedback from clients I've had the pleasure to work with
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <Quote className="h-8 w-8 text-portfolio-primary/20 mb-4" />
+                  <p className="text-muted-foreground mb-6 italic">
+                    "{testimonial.content}"
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {testimonial.role}
+                      </div>
+                    </div>
+                    <div className="flex">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-portfolio-primary to-portfolio-secondary">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Let's collaborate to create something amazing together. I'm
+            available for freelance projects and consultations.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="text-portfolio-primary hover:bg-white/90"
+            >
+              Start a Project
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-portfolio-primary"
+            >
+              Schedule a Call
+            </Button>
+          </div>
+        </div>
+      </section>
+    </Layout>
   );
 };
 
