@@ -5,16 +5,16 @@
       "src": "vite.config.js",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
-        "cleanUrls": true
+        "distDir": "dist"
       }
     }
   ],
   "routes": [
     {
-      "src": "/.*",
+      "src": "/(.*)",
       "dest": "/index.html",
       "status": 200
     }
-  ]
+  ],
+  "cleanUrls": true
 }
