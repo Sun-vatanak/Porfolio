@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  base:process.env.VITE_BASE_PATH || "/Porfolio",
+  
+
   plugins: [react()],
   resolve: {
     alias: {
