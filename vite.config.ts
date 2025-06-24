@@ -3,16 +3,16 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
-  base: './', // Critical for static assets
+  base: '/', // Critical for Vercel
   plugins: [react()],
   build: {
-    outDir: 'dist',
+    outDir: 'out', // Changed from 'dist' to 'out'
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name].[hash].[ext]',
-        chunkFileNames: 'assets/[name].[hash].js',
-        entryFileNames: 'assets/[name].[hash].js'
+        assetFileNames: 'static/[name].[hash][extname]',
+        chunkFileNames: 'static/[name].[hash].js',
+        entryFileNames: 'static/[name].[hash].js'
       }
     }
   },
